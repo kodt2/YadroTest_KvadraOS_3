@@ -1,0 +1,15 @@
+[Unit]
+Description=KOS3 accelerometer sender node A
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/accel_node_a --server-host 127.0.0.1 --accel-port 5000 --result-port 5002 --module-file /var/log/kos3/module.log --log-file /var/log/kos3/accel-node-a.log
+Restart=always
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

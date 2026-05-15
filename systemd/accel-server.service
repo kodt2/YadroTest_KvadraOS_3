@@ -1,0 +1,18 @@
+[Unit]
+Description=KOS3 accelerometer validation server
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/accel_server --accel-port 5000 --b-port 5001 --result-port 5002 --log-file /var/log/kos3/accel-server.log
+Restart=always
+RestartSec=2
+User=nobody
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

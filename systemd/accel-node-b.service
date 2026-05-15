@@ -1,0 +1,15 @@
+[Unit]
+Description=KOS3 accelerometer processor node B
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/accel_node_b --server-host 127.0.0.1 --server-port 5001 --log-file /var/log/kos3/accel-node-b.log
+Restart=always
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
